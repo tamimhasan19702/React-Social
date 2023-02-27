@@ -6,7 +6,12 @@ import { Center,
          FormLabel,
          FormErrorMessage,
          Input,
-         Button } from '@chakra-ui/react'
+         Button,
+         Link ,
+         Text
+      } from '@chakra-ui/react';
+import { Link as RouterLink} from 'react-router-dom'; 
+import Register from './Register';        
 
 function Login() {
   return (
@@ -39,6 +44,21 @@ function Login() {
           Log in
         </Button>
       </form>
+
+      <Text fontSize="xlg" align="center" mt="6">
+        Don't have an account?{" "}
+      <Link 
+      as={RouterLink}
+      to={Register}
+      color="teal.800"
+      fontWeight="medium"
+      textDecor="nounderline"
+      _hover={{background: 'teal.100'}}
+      >Register</Link>{" "}
+      instead!
+      </Text>
+      
+
       </Box>
     </Center>
   )
