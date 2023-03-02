@@ -14,7 +14,10 @@ export const router = createBrowserRouter([
  {path: ROOT, element: 'Public Root'},
  {path: LOGIN, element: <Login />},
  {path: REGISTER, element: <Register />},
- {path: PROTECTED, element: "", children: [
-    {}
+ {path: PROTECTED, element: "this is a string", children: [
+    {
+      path: Dashboard,
+      element: 'Dashboard',
+   }
  ]},
 ])
