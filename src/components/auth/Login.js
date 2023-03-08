@@ -11,13 +11,16 @@ import { Center,
          Text
       } from '@chakra-ui/react';
 import { Link as RouterLink} from 'react-router-dom'; 
-import Register from './Register';        
+import Register from './Register';      
 import { useLogin } from '../../hooks/auth';
+import { useForm } from 'react-hook-form';
+import { emailValidate,passwordValidate } from '../util/form-validate';
 
 
 function Login() {
 
-  const {login, isLoading} = useLogin
+  const {login, isLoading} = useLogin();
+  const {register} = useForm
 
   return (
     <Center w="100%" h="100vh">
@@ -28,13 +31,19 @@ function Login() {
 
         <FormControl isInvalid={false} py="2">
          <FormLabel>Email</FormLabel>
-         <Input type="email" placeholder='user@gmail.com'/>
+         <Input 
+         type="email" 
+         placeholder='user@gmail.com' 
+         {...register("email", emailValidate)}/>
          <FormErrorMessage>Wrong Email Address</FormErrorMessage>
         </FormControl>
         
         <FormControl isInvalid={false} py="2">
          <FormLabel>Password</FormLabel>
-         <Input type="Password" placeholder='Password'/>
+         <Input 
+         type="Password" 
+         placeholder='Password' 
+         {...register("password", passwordValidate)}/>
          <FormErrorMessage>Wrong Password</FormErrorMessage>
         </FormControl>
         
