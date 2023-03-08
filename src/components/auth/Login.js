@@ -15,19 +15,30 @@ import Register from './Register';
 import { useLogin } from '../../hooks/auth';
 import { useForm } from 'react-hook-form';
 import { emailValidate,passwordValidate } from '../util/form-validate';
+import { DASHBOARD } from '../../lib/routes';
 
 
 function Login() {
 
   const {login, isLoading} = useLogin();
-  const {register} = useForm
+  const {register,handleSubmit,reset} = useForm();
+  
+  async function handleLoginIn(data){
+   await login({
+    email: data.email, 
+    password: data.password,
+    redirectTo: DASHBOARD,
+  })
+
+  reset();
+  }
 
   return (
     <Center w="100%" h="100vh">
       <Box mx="1" maxW="md" p="9" borderWidth="1px" borderRadius="lg">
       <Heading mb="4" size="lg" textAlign="center">Log In</Heading>
 
-      <form onSubmit={()=> {}}>
+      <form onSubmit={handleSubmit(handleLoginIn)}>
 
         <FormControl isInvalid={false} py="2">
          <FormLabel>Email</FormLabel>

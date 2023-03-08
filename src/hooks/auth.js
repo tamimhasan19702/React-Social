@@ -47,8 +47,8 @@ export function useLogin(){
     });
     return false //return false if loggin in failed
     }
-    return true //return true is logging in succeeded
     setLoading(false);
+    return true; //return true is logging in succeeded
     }
 
     return {login, isLoading}
