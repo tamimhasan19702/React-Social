@@ -31,7 +31,8 @@ function Login() {
   })
 
   reset();
-  }
+console.log(data)  
+}
 
   return (
     <Center w="100%" h="100vh">
@@ -52,8 +53,8 @@ function Login() {
         <FormControl isInvalid={false} py="2">
          <FormLabel>Password</FormLabel>
          <Input 
-         type="Password" 
-         placeholder='Password' 
+         type="password" 
+         placeholder='password' 
          {...register("password", passwordValidate)}/>
          <FormErrorMessage>Wrong Password</FormErrorMessage>
         </FormControl>

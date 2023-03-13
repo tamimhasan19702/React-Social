@@ -1,6 +1,6 @@
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../lib/firebase';
-import {useState} from "react";
+import {useState} from 'react'
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { DASHBOARD } from '../lib/routes';
 import { useToast } from '@chakra-ui/react';
@@ -16,7 +16,7 @@ export function useAuth(){
 
 // useLogin hooks
 export function useLogin(){
-    const {isLoading, setLoading} = useState(false);
+    const [isLoading, setLoading] = useState(false);
     const toast = useToast();
     const navigate = useNavigate();
 
