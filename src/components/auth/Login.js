@@ -11,31 +11,58 @@ import { Center,
          Text
       } from '@chakra-ui/react';
 import { Link as RouterLink} from 'react-router-dom'; 
-import Register from './Register';        
+import Register from './Register';      
 import { useLogin } from '../../hooks/auth';
-
+import { useForm } from 'react-hook-form';
+import { emailValidate,passwordValidate } from '../util/form-validate';
+import { DASHBOARD } from '../../lib/routes';
 
 function Login() {
 
-  const {login, isLoading} = useLogin
+  const {login, isLoading} = useLogin();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: {errors},
+  } = useForm();
+
+  console.log(errors)
+  
+  async function handleLoginIn(data){
+   const succeeded = await login({
+    email: data.email, 
+    password: data.password,
+    redirectTo: DASHBOARD,
+  })
+
+  if(succeeded) reset();
+ 
+}
 
   return (
     <Center w="100%" h="100vh">
       <Box mx="1" maxW="md" p="9" borderWidth="1px" borderRadius="lg">
       <Heading mb="4" size="lg" textAlign="center">Log In</Heading>
 
-      <form onSubmit={()=> {}}>
+      <form onSubmit={handleSubmit(handleLoginIn)}>
 
-        <FormControl isInvalid={false} py="2">
+        <FormControl isInvalid={errors.email} py="2">
          <FormLabel>Email</FormLabel>
-         <Input type="email" placeholder='user@gmail.com'/>
-         <FormErrorMessage>Wrong Email Address</FormErrorMessage>
+         <Input 
+         type="email" 
+         placeholder='user@gmail.com' 
+         {...register("email", emailValidate)}/>
+         <FormErrorMessage>{errors.email && errors.email.message}</FormErrorMessage>
         </FormControl>
         
-        <FormControl isInvalid={false} py="2">
+        <FormControl isInvalid={errors.password} py="2">
          <FormLabel>Password</FormLabel>
-         <Input type="Password" placeholder='Password'/>
-         <FormErrorMessage>Wrong Password</FormErrorMessage>
+         <Input 
+         type="password" 
+         placeholder='password' 
+         {...register("password", passwordValidate)}/>
+         <FormErrorMessage>{errors.password && errors.password.message}</FormErrorMessage>
         </FormControl>
         
         <Button 
@@ -62,6 +89,7 @@ function Login() {
       >Register</Link>{" "}
       instead!
       </Text>
+      
       
 
       </Box>
