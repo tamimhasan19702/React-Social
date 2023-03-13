@@ -9,9 +9,9 @@ import { useNavigate } from 'react-router-dom';
 // useAuth hooks 
 export function useAuth(){
 
-    const [authUser, isLoading, error] = useAuthState(auth);
+    const [authUser, authLoading, error] = useAuthState(auth);
 
-    return {user: authUser, isLoading, error};
+    return {user: authUser, authLoading, error};
 }
 
 // useLogin hooks
@@ -40,15 +40,15 @@ export function useLogin(){
         toast({
         title: "Logging in failed",
         description: error.message,
-        status: error,
+        status: "error",
         isClosable: true,
         position: "top",
         duration: 5000,
     });
-    return false //return false if loggin in failed
-    }
+    setLoading(false)  //return false if loggin in failed
+    }finally{
     setLoading(false);
-    return true; //return true is logging in succeeded
+    } //return true is logging in succeeded
     }
 
     return {login, isLoading}

@@ -17,7 +17,6 @@ import { useForm } from 'react-hook-form';
 import { emailValidate,passwordValidate } from '../util/form-validate';
 import { DASHBOARD } from '../../lib/routes';
 
-
 function Login() {
 
   const {login, isLoading} = useLogin();
@@ -83,6 +82,7 @@ console.log(data)
       >Register</Link>{" "}
       instead!
       </Text>
+      
       
 
       </Box>
