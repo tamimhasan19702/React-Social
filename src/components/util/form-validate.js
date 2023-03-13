@@ -29,7 +29,7 @@ export const passwordValidate = {
         value: true,
         message: "Please enter password",
     },
-    pattern: {
+    minLength: {
         value: 6,
         message: "Password must be at least 6 charcters long",
     },

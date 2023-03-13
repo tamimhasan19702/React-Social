@@ -14,6 +14,8 @@ export function useAuth(){
     return {user: authUser, authLoading, error};
 }
 
+
+
 // useLogin hooks
 export function useLogin(){
     const [isLoading, setLoading] = useState(false);
@@ -36,7 +38,6 @@ export function useLogin(){
         navigate(redirectTo);
 
     }catch(error){
-    
         toast({
         title: "Logging in failed",
         description: error.message,
@@ -45,10 +46,10 @@ export function useLogin(){
         position: "top",
         duration: 5000,
     });
-    setLoading(false)  //return false if loggin in failed
-    }finally{
+    return false;  //return false if loggin in failed
+    }
     setLoading(false);
-    } //return true is logging in succeeded
+    return true; //return true is logging in succeeded
     }
 
     return {login, isLoading}

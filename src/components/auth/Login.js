@@ -20,17 +20,24 @@ import { DASHBOARD } from '../../lib/routes';
 function Login() {
 
   const {login, isLoading} = useLogin();
-  const {register,handleSubmit,reset} = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: {errors},
+  } = useForm();
+
+  console.log(errors)
   
   async function handleLoginIn(data){
-   await login({
+   const succeeded = await login({
     email: data.email, 
     password: data.password,
     redirectTo: DASHBOARD,
   })
 
-  reset();
-console.log(data)  
+  if(succeeded) reset();
+ 
 }
 
   return (
@@ -40,22 +47,22 @@ console.log(data)
 
       <form onSubmit={handleSubmit(handleLoginIn)}>
 
-        <FormControl isInvalid={false} py="2">
+        <FormControl isInvalid={errors.email} py="2">
          <FormLabel>Email</FormLabel>
          <Input 
          type="email" 
          placeholder='user@gmail.com' 
          {...register("email", emailValidate)}/>
-         <FormErrorMessage>Wrong Email Address</FormErrorMessage>
+         <FormErrorMessage>{errors.email && errors.email.message}</FormErrorMessage>
         </FormControl>
         
-        <FormControl isInvalid={false} py="2">
+        <FormControl isInvalid={errors.password} py="2">
          <FormLabel>Password</FormLabel>
          <Input 
          type="password" 
          placeholder='password' 
          {...register("password", passwordValidate)}/>
-         <FormErrorMessage>Wrong Password</FormErrorMessage>
+         <FormErrorMessage>{errors.password && errors.password.message}</FormErrorMessage>
         </FormControl>
         
         <Button 
