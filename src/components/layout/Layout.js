@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { LOGIN } from '../../lib/routes';
 import { useAuth } from '../../hooks/auth';
+import Navbar from '../navbar/Navbar';
 
 function Layout() {
   const {pathname} = useLocation();
@@ -18,7 +19,7 @@ function Layout() {
 
   return (
     <>
-    this is good: 
+    <Navbar/>
     <Outlet/>
     </>
   )

@@ -14,7 +14,7 @@ import { Link as RouterLink} from 'react-router-dom';
 import Register from './Register';      
 import { useLogin } from '../../hooks/auth';
 import { useForm } from 'react-hook-form';
-import { emailValidate,passwordValidate } from '../util/form-validate';
+import { emailValidate,passwordValidate } from '../../util/form-validate';
 import { DASHBOARD } from '../../lib/routes';
 
 function Login() {
@@ -26,9 +26,8 @@ function Login() {
     reset,
     formState: {errors},
   } = useForm();
-
-  console.log(errors)
-  
+      
+   //test commit
   async function handleLoginIn(data){
    const succeeded = await login({
     email: data.email, 
