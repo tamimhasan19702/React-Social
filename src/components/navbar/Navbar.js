@@ -1,4 +1,6 @@
-import { Flex } from "@chakra-ui/react";
+import { Button, Flex,Link } from "@chakra-ui/react";
+import Dashboard from "../Dashboard/Dashboard";
+import { Link as RouterLink } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -11,8 +13,22 @@ function Navbar() {
     height="16"
     zIndex="3"
     justify="center"
+    
     >
-    <Flex px="4" w="full" align="center" maxW="1200px"></Flex>
+    <Flex px="4" w="full" align="center" maxW="1200px">
+    
+      <Link color="teal" as={RouterLink} to={Dashboard} fontWeight="bold">Home</Link>
+      <Button
+      ml="auto"
+      colorScheme="teal"
+      size="sm"
+      // onClick={handleLogout}
+      // isLoading={isLoading}
+      >
+        Logout
+      </Button>
+    
+    </Flex>
     </Flex>
   );
 }
