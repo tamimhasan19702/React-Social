@@ -1,8 +1,12 @@
 import { Button, Flex,Link } from "@chakra-ui/react";
 import Dashboard from "../Dashboard/Dashboard";
 import { Link as RouterLink } from "react-router-dom";
+import { useLogout } from "../../hooks/useLogout";
 
 function Navbar() {
+  const {logout, isLoading} = useLogout()
+  
+
   return (
     <Flex
     shadow="sm"
@@ -22,8 +26,8 @@ function Navbar() {
       ml="auto"
       colorScheme="teal"
       size="sm"
-      // onClick={handleLogout}
-      // isLoading={isLoading}
+      onClick={logout}
+      isLoading={isLoading}
       >
         Logout
       </Button>

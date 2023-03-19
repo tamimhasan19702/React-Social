@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { LOGIN } from '../../lib/routes';
-import { useAuth } from '../../hooks/auth';
+import { useAuth } from '../../hooks/useAuth';
 import Navbar from '../navbar/Navbar';
 
 function Layout() {
