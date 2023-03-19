@@ -12,7 +12,7 @@ import { Center,
       } from '@chakra-ui/react';
 import { Link as RouterLink} from 'react-router-dom'; 
 import Register from './Register';      
-import { useLogin } from '../../hooks/auth';
+import { useLogin } from '../../hooks/useLogin';
 import { useForm } from 'react-hook-form';
 import { emailValidate,passwordValidate } from '../../util/form-validate';
 import { DASHBOARD } from '../../lib/routes';
