@@ -10,12 +10,12 @@ import { Center,
          Link ,
          Text
       } from '@chakra-ui/react';
-import { Link as RouterLink} from 'react-router-dom'; 
-import Register from './Register';      
+import { Link as RouterLink} from 'react-router-dom';       
 import { useLogin } from '../../hooks/useLogin';
 import { useForm } from 'react-hook-form';
 import { emailValidate,passwordValidate } from '../../util/form-validate';
 import { DASHBOARD } from '../../lib/routes';
+import { REGISTER } from '../../lib/routes';
 
 function Login() {
 
@@ -80,7 +80,7 @@ function Login() {
         Don't have an account?{" "}
       <Link 
       as={RouterLink}
-      to={Register}
+      to={REGISTER}
       color="teal.800"
       fontWeight="medium"
       textDecor="nounderline"
