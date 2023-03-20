@@ -11,12 +11,12 @@ function ActiveUser(){
     return (
     <Stack align="center" spacing="5" my="8">
         
-        <Code>@{user.id}</Code>
+        <Code>@{user.username}</Code>
         <Button 
         colorScheme="teal" 
         w="full"
         as={Link} 
-        to={`${PROTECTED}/profile/${user?.id}`}>
+        to={`${PROTECTED}/profile/${user.id}`}>
             Edit Profile
         </Button>
 
