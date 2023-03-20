@@ -5,7 +5,7 @@ export const usernameValidate = {
     },
     minLength: {
         value: 6,
-        message: "Username must be at least ^ characters long",
+        message: "Username must be at least 6 characters long",
     },
     pattern: {
         value: /^[a-zA-Z0-9]+$/, //Regex pattern for username validation
