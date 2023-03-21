@@ -9,7 +9,9 @@ function ActiveUser(){
     if(isLoading) return "Loading..."
 
     return (
-    <Stack align="center" spacing="5" my="8">
+        <Link to={`${PROTECTED}/profile/${user.id}`}>
+        
+        <Stack align="center" spacing="5" my="8">
         
         <Avatar 
         name={user.username} 
@@ -22,11 +24,13 @@ function ActiveUser(){
         colorScheme="teal" 
         w="full"
         as={Link} 
-        to={`${PROTECTED}/profile/${user.id}`}>
+        >
             Edit Profile
         </Button>
 
-    </Stack>
+        </Stack>
+        
+        </Link>
     )
 }
 

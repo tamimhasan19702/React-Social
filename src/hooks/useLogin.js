@@ -22,7 +22,7 @@ export function useLogin(){
             status: "success",
             isClosable: true,
             position: "top",
-            duration: 5000,
+            duration: 3000,
         });
         navigate(redirectTo);
 
@@ -33,7 +33,7 @@ export function useLogin(){
         status: "error",
         isClosable: true,
         position: "top",
-        duration: 5000,
+        duration: 3000,
     });
     setLoading(false);
     return false;  //return false if loggin in failed
