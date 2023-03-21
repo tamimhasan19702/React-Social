@@ -1,22 +1,22 @@
-import { Box, Button, Stack, Code } from "@chakra-ui/react";
+import { Box, Button, Stack, Code} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { PROTECTED, USERS } from "../../lib/routes";
-
+import Avatar from "../profile/Avatar";
 
 function ActiveUser(){
-    const {user, isLoading} = useAuth();
-    if(isLoading) return "Loading..."
+    const {user} = useAuth();
 
     return (
     <Stack align="center" spacing="5" my="8">
         
-        <Code>@{user.username}</Code>
+        <Avatar user={user}/>
+        <Code>@{user?.username}</Code>
         <Button 
         colorScheme="teal" 
         w="full"
         as={Link} 
-        to={`${PROTECTED}/profile/${user.id}`}>
+        to={`${PROTECTED}/profile/${user?.id}`}>
             Edit Profile
         </Button>
 

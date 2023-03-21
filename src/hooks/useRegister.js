@@ -26,7 +26,7 @@ export function useRegister(){
             status: "error",
             isClosable: true,
             position: "top",
-            duration: 5000,
+            duration: 3000,
         });
         setLoading(false);
 
@@ -47,7 +47,7 @@ export function useRegister(){
             status: "success",
             isClosable: true,
             position: "top",
-            duration: 5000,
+            duration: 3000,
         })
 
         navigate(redirectTo)
@@ -58,7 +58,7 @@ export function useRegister(){
                 status: "error",
                 isClosable: true,
                 position: "top",
-                duration: 5000,
+                duration: 3000,
             });
         } finally{
             setLoading(false)

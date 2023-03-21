@@ -18,7 +18,7 @@ export function useLogout(){
             status: "success",
             isClosable: true,
             position: "top",
-            duration: 5000,
+            duration: 3000,
         })
         navigate(Login)
      }else{
@@ -27,7 +27,7 @@ export function useLogout(){
             status: "error",
             isClosable: true,
             position: "top",
-            duration: 5000,
+            duration: 3000,
         })
      }
    
