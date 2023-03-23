@@ -1,7 +1,8 @@
+//analyze all the code below of this comment
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../lib/firebase';
 import { useEffect, useState } from 'react';
-import {setDoc, doc, getDoc} from "firebase/firestore";
+import { doc, getDoc} from "firebase/firestore";
 import { db } from '../lib/firebase';
 
 // useAuth hooks 
@@ -34,6 +35,4 @@ export function useAuth(){
     return {user, isLoading, error};
 }
 
-
-
-
+//why .env.local used??

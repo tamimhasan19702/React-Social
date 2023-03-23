@@ -5,18 +5,19 @@ import { PROTECTED, USERS } from "../../lib/routes";
 import Avatar from "../profile/Avatar";
 
 function ActiveUser(){
-    const {user} = useAuth();
+    const {user,isLoading} = useAuth();
+    if(isLoading) return "Loading..."
 
     return (
     <Stack align="center" spacing="5" my="8">
         
         <Avatar user={user}/>
-        <Code>@{user?.username}</Code>
+        <Code>@{user.username}</Code>
         <Button 
         colorScheme="teal" 
         w="full"
         as={Link} 
-        to={`${PROTECTED}/profile/${user?.id}`}>
+        to={`${PROTECTED}/profile/${user.id}`}>
             Edit Profile
         </Button>
 

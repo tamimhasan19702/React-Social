@@ -5,12 +5,11 @@ import { Link } from "react-router-dom";
 import { PROTECTED} from "../../lib/routes";
 
 export default function Avatar({user}) {
-    if(!user) return "Loading...";
   return (
     <ChakraAvatar 
         as={Link}
-        to={`${PROTECTED}/profile/${user?.id}`}
-        name={user?.username} 
+        to={`${PROTECTED}/profile/${user.id}`}
+        name={user.username} 
         size="2xl" 
         src={user?.avatar}
         _hover={{ cursor: "pointer", opacity: "0.6"}}/>
