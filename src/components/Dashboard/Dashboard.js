@@ -1,8 +1,38 @@
-import React from 'react'
+import { Heading, HStack } from "@chakra-ui/layout"
+import { Box,Button,Textarea } from "@chakra-ui/react"
+import TextareaAutosize from "react-textarea-autosize"
+import {useForm} from "react-hook-form";
+import useAddPost from "../../hooks/useAddPost";
 
 function Dashboard() {
+ 
+  const {register,handleSubmit,reset} = useForm();
+  const {addPost,isLoading} = useAddPost();
+
+  function handleAddPost(data){
+    console.log(data);
+    reset();
+  }
+
   return (
-    <div>Dashboard</div>
+    <Box maxW="600px" mx="auto" py="10">
+     <form onSubmit={handleSubmit(handleAddPost)}>
+      
+      <HStack justify="space-between">
+        <Heading size="lg">New Post</Heading>
+        <Button colorScheme="teal" type="submit">Post</Button>
+      </HStack>
+     <Textarea 
+     as={TextareaAutosize} 
+     resize="none" 
+     mt="5" 
+     placeholder="Write something new... "
+     minRows={3}
+     {...register("text", {required: true })}
+     />
+
+     </form>
+    </Box>
   )
 }
 
