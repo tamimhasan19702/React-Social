@@ -2,19 +2,21 @@ import { Heading, HStack } from "@chakra-ui/layout"
 import { Box,Button,Textarea } from "@chakra-ui/react"
 import TextareaAutosize from "react-textarea-autosize"
 import {useForm} from "react-hook-form";
+import useAddPost from "../../hooks/useAddPost";
 
 function Dashboard() {
  
   const {register,handleSubmit,reset} = useForm();
+  const {addPost,isLoading} = useAddPost();
 
-  function handlePost(data){
+  function handleAddPost(data){
     console.log(data);
     reset();
   }
 
   return (
     <Box maxW="600px" mx="auto" py="10">
-     <form onSubmit={handleSubmit(handlePost)}>
+     <form onSubmit={handleSubmit(handleAddPost)}>
       
       <HStack justify="space-between">
         <Heading size="lg">New Post</Heading>
