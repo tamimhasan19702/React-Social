@@ -78,7 +78,7 @@ function Register() {
         type='submit' 
         w="full" 
         size="lg" 
-        isLoading={false}
+        isLoading={isLoading}
         loadingText="Signing up">
           Register
         </Button>

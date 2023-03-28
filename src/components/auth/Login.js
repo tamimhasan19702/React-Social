@@ -11,15 +11,16 @@ import { Center,
          Text
       } from '@chakra-ui/react';
 import { Link as RouterLink} from 'react-router-dom';       
-import { useLogin } from '../../hooks/useLogin';
 import { useForm } from 'react-hook-form';
 import { emailValidate,passwordValidate } from '../../util/form-validate';
 import { DASHBOARD } from '../../lib/routes';
 import { REGISTER } from '../../lib/routes';
+import {useLogin} from '../../hooks/useLogin';
 
 function Login() {
 
-  const {login, isLoading} = useLogin();
+  const {login,isLoading} = useLogin()
+  
   const {
     register,
     handleSubmit,
@@ -70,7 +71,7 @@ function Login() {
         type='submit' 
         w="full" 
         size="lg" 
-        isLoading={false}
+        isLoading={isLoading}
         loadingText="Logging In">
           Log in
         </Button>

@@ -14,13 +14,17 @@ export function useRegister(){
     const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
     const navigate = useNavigate()
      
-    async function register({ username, email, password, redirectTo=DASHBOARD}){
+    async function register({ 
+        username, 
+        email, 
+        password, 
+        redirectTo=DASHBOARD
+    }){
      setLoading(true);
 
      const usernameExists = await isUsernameExists(username);
 
      if(usernameExists){
-        
         toast({
             title:"Username already exists",
             status: "error",
@@ -29,9 +33,7 @@ export function useRegister(){
             duration: 3000,
         });
         setLoading(false);
-
      } else {
-
          try{
          const response = await createUserWithEmailAndPassword(email,password);
 

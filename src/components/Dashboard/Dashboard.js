@@ -3,14 +3,19 @@ import { Box,Button,Textarea } from "@chakra-ui/react"
 import TextareaAutosize from "react-textarea-autosize"
 import {useForm} from "react-hook-form";
 import useAddPost from "../../hooks/useAddPost";
+import { useAuth } from '../../hooks/useAuth';
 
 function Dashboard() {
  
   const {register,handleSubmit,reset} = useForm();
-  const {addPost,isLoading} = useAddPost();
+  const {addPost,isLoading: addingPost} = useAddPost();
+  const {user, isLoading: authLoading} = useAuth();
 
   function handleAddPost(data){
-    console.log(data);
+    addPost({
+      uid: user.id,
+      text: data.text,
+    })
     reset();
   }
 
@@ -20,7 +25,12 @@ function Dashboard() {
       
       <HStack justify="space-between">
         <Heading size="lg">New Post</Heading>
-        <Button colorScheme="teal" type="submit">Post</Button>
+        <Button 
+        colorScheme="teal" 
+        type="submit" 
+        isLoading={authLoading || addingPost }
+        loadingText="Loading"
+        >Post</Button>
       </HStack>
      <Textarea 
      as={TextareaAutosize} 
