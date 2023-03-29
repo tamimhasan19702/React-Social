@@ -4,9 +4,10 @@ import TextareaAutosize from "react-textarea-autosize"
 import {useForm} from "react-hook-form";
 import useAddPost from "../../hooks/useAddPost";
 import { useAuth } from '../../hooks/useAuth';
+import PostList from "../posts/PostList";
 
-function Dashboard() {
- 
+function NewPost(){
+
   const {register,handleSubmit,reset} = useForm();
   const {addPost,isLoading: addingPost} = useAddPost();
   const {user, isLoading: authLoading} = useAuth();
@@ -19,7 +20,7 @@ function Dashboard() {
     reset();
   }
 
-  return (
+  return(
     <Box maxW="600px" mx="auto" py="10">
      <form onSubmit={handleSubmit(handleAddPost)}>
       
@@ -43,6 +44,17 @@ function Dashboard() {
 
      </form>
     </Box>
+  )
+}
+
+
+function Dashboard() {
+ 
+  return (
+    <>
+    <NewPost/>
+    <PostList posts={[]}/>
+    </>
   )
 }
 
