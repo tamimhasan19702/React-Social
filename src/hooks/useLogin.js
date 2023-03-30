@@ -1,5 +1,5 @@
 // useLogin hooks
-import {useState} from 'react';
+import { useState} from 'react';
 import { useToast } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { DASHBOARD } from '../lib/routes';
@@ -35,11 +35,11 @@ export function useLogin(){
         position: "top",
         duration: 3000,
     });
-    setLoading(false);
-    return false;  //return false if loggin in failed
+         setLoading(false);  //return false if loggin in failed
+    } finally{
+         setLoading(false); //return true is logging in succeeded
     }
-    setLoading(false);
-    return true; //return true is logging in succeeded
+
     }
 
     return {login, isLoading}

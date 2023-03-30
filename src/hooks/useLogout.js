@@ -1,10 +1,9 @@
 //useLogout hooks
 import { useSignOut } from 'react-firebase-hooks/auth';
-import Login from '../components/auth/Login';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@chakra-ui/react';
 import { auth } from '../lib/firebase';
-
+import {LOGIN} from '../lib/routes';
 
 export function useLogout(){
     const [signOut, isLoading, error] = useSignOut(auth);
@@ -19,16 +18,8 @@ export function useLogout(){
             isClosable: true,
             position: "top",
             duration: 3000,
-        })
-        navigate(Login)
-     }else{
-        toast({
-            title: "Error Logging Out",
-            status: "error",
-            isClosable: true,
-            position: "top",
-            duration: 3000,
-        })
+        });
+        navigate(LOGIN)
      }
    
     }
