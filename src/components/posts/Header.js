@@ -1,9 +1,11 @@
 import {Flex} from '@chakra-ui/react';
+import useUsers from '../../hooks/useUsers';
 import Avatar from '../profile/Avatar';
 
-export default function Header({post}) {
+export default function Header({uid}) {
+  const {user,isLoading} = useUsers(uid)
+  if (isLoading) return "Loading user...";
 
-  
 
   return (
   <Flex
@@ -13,7 +15,7 @@ export default function Header({post}) {
   p="3"
   bg="gray.50">
 
-  {/* <Avatar /> */}
+  <Avatar user={user}/>
   </Flex>
   );
 }
