@@ -5,6 +5,7 @@ import {useForm} from "react-hook-form";
 import useAddPost from "../../hooks/useAddPost";
 import { useAuth } from '../../hooks/useAuth';
 import PostList from "../posts/PostList";
+import usePosts from '../../hooks/usePosts';
 
 function NewPost(){
 
@@ -50,10 +51,14 @@ function NewPost(){
 
 function Dashboard() {
  
+  const {posts , isLoading} = usePosts();
+
+  if(isLoading) return "Loading posts...";
+
   return (
     <>
     <NewPost/>
-    <PostList posts={[]}/>
+    <PostList posts={posts}/>
     </>
   )
 }
