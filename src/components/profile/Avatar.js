@@ -1,5 +1,4 @@
 import React from "react";
-import { useAuth } from "../../hooks/useAuth";
 import { Avatar as ChakraAvatar } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { PROTECTED} from "../../lib/routes";

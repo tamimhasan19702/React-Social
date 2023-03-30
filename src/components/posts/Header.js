@@ -2,6 +2,7 @@ import {Flex,Box, Text} from '@chakra-ui/react';
 import useUsers from '../../hooks/useUsers';
 import Avatar from '../profile/Avatar';
 import { Button } from '@chakra-ui/react';
+import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
 export default function Header({uid, date}) {
   const {user,isLoading} = useUsers(uid)
@@ -23,7 +24,7 @@ export default function Header({uid, date}) {
       {user.username}
    </Button>
    <Text fontSize="sm" color="gray.500">
-    {date}</Text>
+    {formatDistanceToNow(date)} ago</Text>
   </Box>
 
   </Flex>
