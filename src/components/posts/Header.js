@@ -4,7 +4,8 @@ import Avatar from '../profile/Avatar';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import UserNameButton from '../profile/UserNameButton';
 
-export default function Header({uid, date}) {
+export default function Header({post}) {
+  const { uid, date } = post;
   const {user,isLoading} = useUsers(uid)
   if (isLoading) return "Loading user...";
 
