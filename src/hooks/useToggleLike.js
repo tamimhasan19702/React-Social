@@ -12,7 +12,7 @@ export default function useToggleLike({id,isLiked,uid}) {
     await updateDoc(docRef, {
       likes: isLiked ? arrayRemove(uid) : arrayUnion(uid),
     });
-    isLoading(false);
+    setLoading(false);
   }
 
   return {toggleLike, isLoading}
