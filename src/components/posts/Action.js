@@ -1,8 +1,10 @@
 import { Flex, IconButton } from "@chakra-ui/react";
 import React from "react";
-import {FaRegHeart,FaHeart} from "react-icons/fa";
+import {FaRegHeart,FaHeart,FaComment, FaRegComment} from "react-icons/fa";
 import { useAuth } from "../../hooks/useAuth";
 import useToggleLike from "../../hooks/useToggleLike";
+import { Link } from "react-router-dom";
+import {PROTECTED} from '../../lib/routes';
 
 export default function Action({post}) {
 
@@ -26,6 +28,21 @@ export default function Action({post}) {
       isRound
       />
       {likes.length}
+     </Flex>
+
+     <Flex alignItems="center" ml="2">
+      <IconButton 
+      as={Link}
+      to={`${PROTECTED}/comments/${id}`}
+      // onClick={toggleLike}
+      // isLoading={likeLoading || userLoading }
+      size="md" 
+      colorScheme="teal" 
+      variant="ghost"
+      icon={<FaRegComment />}
+      isRound
+      />
+      5
      </Flex>
 
     </Flex>

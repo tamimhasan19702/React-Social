@@ -12,6 +12,7 @@ export const PROTECTED = "/protected";
 export const DASHBOARD = "/protected/dashboard";
 export const USERS = "/protected/users"
 export const PROFILE = "/protected/profile/:id"
+export const COMMENTS = "/protected/comments/:id"
 
 export const router = createBrowserRouter([
  {path: ROOT, element: 'Public Root'},
@@ -31,7 +32,10 @@ export const router = createBrowserRouter([
     path: PROFILE,
     element: "User profile for a specific id",
    },
-
+   {
+    path: COMMENTS,
+    element: "all comments for a specific post id",
+   },
  ],
 },
 ])
