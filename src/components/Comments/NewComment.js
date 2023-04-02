@@ -6,7 +6,7 @@ import useComments from "../../hooks/useComments";
 
 export default function NewComment({post}) {
   const {id:postId} = post;
-  const {user,isLoading} = useAuth();
+  const {user,isLoading: authLoading} = useAuth();
   const {register,handleSubmit,reset} = useForm();
   const {addComment, isLoading:commentLoading} = useComments({postId,uid:user?.id});
 
@@ -15,7 +15,7 @@ export default function NewComment({post}) {
     reset()
   }
 
-  if(isLoading) return "Loading...";
+  if(authLoading) return "Loading...";
 
   return (
    <Box maxW="600px" mx="auto" py="6">
@@ -36,7 +36,7 @@ export default function NewComment({post}) {
           
           <Flex pt="2">
            <Button
-        isLoading={commentLoading}
+        isLoading={commentLoading || authLoading}
         type="submit"
         colorScheme="teal"
         ml="auto"
