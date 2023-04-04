@@ -4,7 +4,7 @@ import {uuidv4} from '@firebase/util';
 import { db } from '../lib/firebase';
 import { useToast } from '@chakra-ui/react';
 
-export default function useComments(postId) {
+export default function useAddComments({postId}) {
   const [isLoading,setLoading] = useState(false);
   const toast = useToast();
 

@@ -9,6 +9,10 @@ export default function CommentList({post}) {
   if(isLoading) return 'Loading...'
 
   return (
-    <>{comments}</>
+    comments.map((comment) => 
+    <>
+    {comment.text}
+    <br/>
+    </>)
   )
 }
