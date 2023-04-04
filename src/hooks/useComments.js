@@ -13,6 +13,7 @@ export default function useComments(postId) {
    const id = uuidv4();
    const date = Date.now();
    const docRef = doc(db, "comments",id)
+   
    await setDoc(docRef, {text, id,postId,date});
 
    toast({
