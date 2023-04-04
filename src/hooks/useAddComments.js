@@ -4,7 +4,7 @@ import {uuidv4} from '@firebase/util';
 import { db } from '../lib/firebase';
 import { useToast } from '@chakra-ui/react';
 
-export default function useComments(postId) {
+export default function useAddComments({postId}) {
   const [isLoading,setLoading] = useState(false);
   const toast = useToast();
 
@@ -13,6 +13,7 @@ export default function useComments(postId) {
    const id = uuidv4();
    const date = Date.now();
    const docRef = doc(db, "comments",id)
+   
    await setDoc(docRef, {text, id,postId,date});
 
    toast({
