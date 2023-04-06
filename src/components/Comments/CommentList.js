@@ -1,18 +1,15 @@
+import { Box } from "@chakra-ui/react";
 import useCommentsList from "../../hooks/useCommentsList";
+import SingleComment from "./SingleComment";
 
+export default function CommentList({ post }) {
+  const { id } = post;
+  const { comments, isLoading } = useCommentsList(id);
 
-export default function CommentList({post}) {
+  if (isLoading) return "Loading...";
 
-  const {id} = post;
-  const {comments,isLoading} = useCommentsList(id);
-
-  if(isLoading) return 'Loading...'
-
-  return (
-    comments.map((comment) => 
-    <>
-    {comment.text}
-    <br/>
-    </>)
-  )
+  return <Box>
+    <SingleComment />
+    {comments.map((comment) => <h1>{comment}</h1>)}
+  </Box>;
 }
