@@ -2,18 +2,24 @@ import { Box, Button, Flex, Input } from "@chakra-ui/react";
 import { useAuth } from "../../hooks/useAuth";
 import Avatar from "../profile/Avatar";
 import {useForm} from 'react-hook-form';
+import useAddComment from "../../hooks/useAddComment";
 
 
-export default function NewComment() {
-  const {user,isLoading} = useAuth();
+export default function NewComment({post}) {
+  const {id:postId} = post;
+  const {user,isLoading:isAuthLoading} = useAuth();
   const {register,handleSubmit,reset} = useForm();
+  const {addComment, isLoading:isCommentLoading} = useAddComment({
+    postId,
+    uid: user?.id,
+  })
 
-  function handleAddComment(){
-   
+  function handleAddComment(data){
+    addComment(data.text)
     reset()
   }
 
-  if(isLoading) return "Loading...";
+  if(isAuthLoading) return "Loading...";
 
   return (
    <Box maxW="600px" mx="auto" py="6">
@@ -34,7 +40,7 @@ export default function NewComment() {
           
           <Flex pt="2">
            <Button
-        //isLoading={}
+        isLoading={isAuthLoading || isCommentLoading}
         type="submit"
         colorScheme="teal"
         ml="auto"
