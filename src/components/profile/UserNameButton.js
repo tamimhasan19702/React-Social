@@ -7,10 +7,10 @@ export default function UserNameButton({user}) {
   return (
     <Button 
     as={Link}
-    to={`${PROTECTED}/profile/${user.id}`} 
+    to={`${PROTECTED}/profile/${user?.id}`} 
     colorScheme="teal" 
     variant="link">
-      {user.username}
+      {user?.username}
    </Button>
   )
 }
