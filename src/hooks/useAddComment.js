@@ -6,7 +6,7 @@ import { db } from "../lib/firebase";
 
 export default function useAddComment({postId}) {
   
-  const {isLoading,setLoading} = useState(false);
+  const [isLoading,setLoading] = useState(false);
   const toast =useToast();
 
   async function addComment(text){
@@ -21,10 +21,10 @@ export default function useAddComment({postId}) {
         status: "success",
         isClosable: true,
         position: "top",
-        duration: 5000
-    })
+        duration: 3000
+    });
 
-   setLoading(false)
+   setLoading(false);
 }
   
     return {addComment,isLoading}

@@ -9,7 +9,10 @@ export default function CommentList({post}) {
   
     return(
         <Box>
-        {comments.map((comment) =><>{comment.text}</>)}
+        {
+        comments.map((comment) =>(
+        <>{comment.text}</>))
+        }
         </Box>
     );
 }
