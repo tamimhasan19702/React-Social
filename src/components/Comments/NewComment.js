@@ -40,7 +40,7 @@ export default function NewComment({post}) {
           
           <Flex pt="2">
            <Button
-        isLoading={isAuthLoading || isCommentLoading}
+        isLoading={commentLoading || authLoading}
         type="submit"
         colorScheme="teal"
         ml="auto"
