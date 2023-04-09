@@ -7,8 +7,8 @@ export default function Avatar({user, size="xl"}) {
   return (
     <ChakraAvatar 
         as={Link}
-        to={`${PROTECTED}/profile/${user.id}`}
-        name={user.username} 
+        to={`${PROTECTED}/profile/${user?.id}`}
+        name={user?.username} 
         size={size} 
         src={user?.avatar}
         _hover={{ cursor: "pointer", opacity: "0.6"}}/>
