@@ -17,4 +17,5 @@ export default function CommentList({post}) {
         }
         </Box>
     );
+
 }

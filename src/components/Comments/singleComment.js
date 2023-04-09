@@ -1,3 +1,4 @@
+
 import { Box,Flex,Text } from "@chakra-ui/react";
 import React from "react";
 import Avatar from "../profile/Avatar";
@@ -30,4 +31,5 @@ export default function SingleComment({comment}) {
        </Flex>
      </Box>
   );
+
 }
