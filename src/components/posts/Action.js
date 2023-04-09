@@ -6,14 +6,19 @@ import useToggleLike from "../../hooks/useToggleLike";
 import { Link } from "react-router-dom";
 import {PROTECTED} from '../../lib/routes';
 import useDeletePost from "../../hooks/useDeletePost";
+import useCommentList from "../../hooks/useCommentList";
 
 export default function Action({post}) {
 
   const {id,likes} = post;
   const {user,isLoading:userLoading} = useAuth();
   const isLiked = likes.includes(user?.id);
+
   const {toggleLike, isLoading: likeLoading} = useToggleLike({id,isLiked, uid: user?.id });
   const {deletePost,isLoading:deleteLoading} = useDeletePost(id);
+  const {comments,isLoading: commentsLoading} = useCommentList(id);
+
+
 
   return (
     <Flex p="2">
@@ -35,14 +40,14 @@ export default function Action({post}) {
       <IconButton 
       as={Link}
       to={`${PROTECTED}/comments/${id}`}
-      // onClick={toggleLike}
+      
       size="md" 
       colorScheme="teal" 
       variant="ghost"
-      icon={<FaRegComment />}
+      icon={comments?.length === 0 ?<FaRegComment /> : <FaComment />}
       isRound
       />
-      5
+      {comments?.length}
      </Flex>
 
      <IconButton 
