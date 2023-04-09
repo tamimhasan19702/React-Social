@@ -1,5 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import useCommentList from "../../hooks/useCommentList";
+import SingleComment from "./SingleComment";
 
 export default function CommentList({post}) {
     const {id} = post;
@@ -11,7 +12,8 @@ export default function CommentList({post}) {
         <Box>
         {
         comments.map((comment) =>(
-        <>{comment.text}</>))
+        <SingleComment key={comment.id} comment={comment}/>
+            ))
         }
         </Box>
     );
