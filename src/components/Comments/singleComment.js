@@ -3,6 +3,7 @@ import React from "react";
 import Avatar from "../profile/Avatar";
 import useUsers from "../../hooks/useUsers";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import UserNameButton from "../profile/UserNameButton";
 
 export default function SingleComment({comment}) {
   const {text,uid,date} = comment;
@@ -17,7 +18,7 @@ export default function SingleComment({comment}) {
        <Box flex="1" ml="4">
          <Flex borderBottom="1px solid" borderColor="teal.100" pb="2">
           <Box>
-            @{user.username}
+            <UserNameButton user={user}/> 
             <Text fontSize="xs" color="gray.500">
              {formatDistanceToNow(date)}
             </Text>
