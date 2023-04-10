@@ -20,20 +20,19 @@ export default function SingleComment({comment}) {
 
   return (
      <Box px="2" maxW="600px" mx="auto" textAlign="left">
-       <Flex pb="2">
+       <Flex pb="10">
+        <Box pt="2">
        <Avatar user={user} size="sm"/>
+        </Box>
        <Box flex="1" ml="4">
          <Flex borderBottom="1px solid" borderColor="teal.100" pb="2">
-          <Box>
-            <UserNameButton user={user}/> 
-            <Text fontSize="xs" color="gray.500">
-             {formatDistanceToNow(date)}
-            </Text>
-          </Box>
+
+         <Box pb="2" fontSize="sm">
+         <UserNameButton user={user}/> 
+          <Text>{text}</Text>
+         </Box>
 
    {!authLoading && authUser.id === uid && (
-
-
           <IconButton 
           size="md" 
           ml="auto" 
@@ -46,11 +45,14 @@ export default function SingleComment({comment}) {
           />
 )      
 }
-
          </Flex>
-         <Box pt="2" fontSize="sm">
-          <Text>{text}</Text>
-         </Box>
+         
+         <Box>
+            <Text fontSize="xs" color="gray.500">
+             {formatDistanceToNow(date)} ago
+            </Text>
+          </Box>
+
        </Box>
        </Flex>
      </Box>
