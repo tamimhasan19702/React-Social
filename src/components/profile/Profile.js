@@ -46,7 +46,7 @@ export default function Profile() {
            </HStack>
           
           </Stack>
-          <EditProfile isOpen={isOpen}/>
+          <EditProfile isOpen={isOpen} onClose={onClose}/>
           </Flex>
           <Divider />
 
