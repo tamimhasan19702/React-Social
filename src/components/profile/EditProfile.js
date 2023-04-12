@@ -2,12 +2,19 @@ import { Modal, ModalContent, ModalOverlay,ModalHeader, ModalCloseButton,ModalBo
 import React from "react";
 import { useAuth } from "../../hooks/useAuth";
 import Avatar from "./Avatar";
+import useUpdateAvatar from "../../hooks/useUpdateAvatar";
+
 
 export default function EditProfile({isOpen,onClose}) {
 
-  const {user,isLoading} = useAuth()
+  const {user,isLoading:authLoading} = useAuth();
+  const {setFile,updateAvatar,isLoading:fileLoading} = useUpdateAvatar(user?.id);
 
-  if (isLoading) return "Loading..."
+  function handleChange(e){
+  setFile(e.target.files[0])
+  }
+
+  if (authLoading) return "Loading..."
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -22,7 +29,7 @@ export default function EditProfile({isOpen,onClose}) {
           <Avatar user={user} />
           <FormControl py="4">
            <FormLabel htmlFor="picture">Change avatar</FormLabel>
-           <input type="file" accept="image/*" onChange={() => {}}/>
+           <input type="file" accept="image/*" onChange={handleChange}/>
           </FormControl>
         </HStack>
 
@@ -30,7 +37,9 @@ export default function EditProfile({isOpen,onClose}) {
         loadingText="Uploading"
         w="full"
         my="4"
-        colorScheme="teal">
+        colorScheme="teal"
+        onClick={updateAvatar}
+        isLoading={fileLoading}>
             Save
         </Button>
 
