@@ -48,5 +48,9 @@ export default function useUpdateAvatar(uid) {
     navigate(0);
   }
 
-    return {setFile,updateAvatar,isLoading};
+    return {
+      setFile,
+      updateAvatar,
+      isLoading,
+      fileUrl: file && URL.createObjectURL(file)};
 }
