@@ -10,14 +10,13 @@ import useCommentList from "../../hooks/useCommentList";
 
 export default function Action({post}) {
 
-  const {id,likes} = post;
+  const {id,likes,uid} = post;
   const {user,isLoading:userLoading} = useAuth();
   const isLiked = likes.includes(user?.id);
 
   const {toggleLike, isLoading: likeLoading} = useToggleLike({id,isLiked, uid: user?.id });
   const {deletePost,isLoading:deleteLoading} = useDeletePost(id);
   const {comments,isLoading: commentsLoading} = useCommentList(id);
-
 
 
   return (
@@ -50,6 +49,7 @@ export default function Action({post}) {
       {comments?.length}
      </Flex>
 
+   { !userLoading && user.id === uid && (
      <IconButton 
       ml="auto"
       onClick={deletePost}
@@ -59,7 +59,8 @@ export default function Action({post}) {
       variant="ghost"
       icon={<FaTrash />}
       isRound
-      />
+      />)
+    }
 
     </Flex>
   );
