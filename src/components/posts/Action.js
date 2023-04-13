@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import {PROTECTED} from '../../lib/routes';
 import useDeletePost from "../../hooks/useDeletePost";
 import useCommentList from "../../hooks/useCommentList";
-import useUsers from "../../hooks/useUsers";
 
 export default function Action({post}) {
 
