@@ -1,9 +1,10 @@
 import { SimpleGrid } from "@chakra-ui/react";
-import useUsers from "../../hooks/useUsers";
+
 import User from "./User";
+import useAllUsers from "../../hooks/useAllUsers";
 
 export default function Users() {
-    const {users,isLoading} = useUsers();
+    const {users, isLoading} = useAllUsers()
 
     if(isLoading) return "Loading...";
   
